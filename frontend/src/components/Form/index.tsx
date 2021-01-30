@@ -3,9 +3,15 @@ import { cssModule } from '../../utils'
 
 interface Props extends React.FormHTMLAttributes<HTMLFormElement> {
   onSubmit?: () => void
+  error?: boolean
 }
 
-export function Form({ children, onSubmit = () => {}, ...props }: Props) {
+export function Form({
+  onSubmit = () => {},
+  error,
+  children,
+  ...props
+}: Props) {
   const css = cssModule(styles)
 
   const handler = (e: React.FormEvent) => {
@@ -14,7 +20,11 @@ export function Form({ children, onSubmit = () => {}, ...props }: Props) {
   }
 
   return (
-    <form onSubmit={handler} className={css('wrapper') + ' shadow'} {...props}>
+    <form
+      onSubmit={handler}
+      className={css('wrapper', error ? 'err' : '') + ' shadow'}
+      {...props}
+    >
       {children}
     </form>
   )

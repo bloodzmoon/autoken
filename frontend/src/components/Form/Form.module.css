@@ -7,3 +7,20 @@
   display: flex;
   flex-direction: column;
 }
+
+.err {
+  animation: wiggle linear .2s;
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    margin-left: 0;
+  }
+
+  25% {
+    margin-left: -.5rem;
+  }
+  75% {
+    margin-left: .5rem;
+  }
+}

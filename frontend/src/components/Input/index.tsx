@@ -4,15 +4,19 @@ import { IconType } from 'react-icons'
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   Icon?: IconType
+  error?: boolean
 }
 
-export function Input({ Icon, ...props }: Props) {
+export function Input({ Icon, error, ...props }: Props) {
   const css = cssModule(styles)
 
   return (
     <span className={css('wrapper')}>
       {Icon && <Icon className={css('icon')} />}
-      <input className={css('input', Icon ? 'indent' : '')} {...props} />
+      <input
+        className={css('input', Icon ? 'indent' : '', error ? 'err' : '')}
+        {...props}
+      />
     </span>
   )
 }
