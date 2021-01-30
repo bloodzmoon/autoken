@@ -1,0 +1,25 @@
+.btn {
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 1rem;
+  color: white;
+  background: #3B82F6;
+  border: none;
+  border-radius: 6px;
+  transition: box-shadow .2s;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.25rem #8EBAF9;
+}
+
+.btn:active {
+  background: #2563EB;
+}
