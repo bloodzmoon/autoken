@@ -31,10 +31,10 @@ router.post('/login', (req, res) => {
 router.post('/token', (req, res) => {
   const { refreshToken } = req.body
   if (!refreshToken) return res.sendStatus(401)
-  if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403)
+  if (!refreshTokens.includes(refreshToken.token)) return res.sendStatus(403)
 
   JWT.verify(
-    refreshToken,
+    refreshToken.token,
     process.env.REFRESH_TOKEN_SECRET as string,
     (err: any, { username }: any) => {
       if (err) return res.sendStatus(403)

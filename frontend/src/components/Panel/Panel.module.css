@@ -3,3 +3,18 @@
   flex-direction: column;
 }
 
+.link {
+  font-size: 20px;
+  margin-right: 4px;
+  transform: translateY(3px);
+}
+
+.spin {
+  animation: spin linear 2s;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(-360deg);
+  }
+}

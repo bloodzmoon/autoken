@@ -36,11 +36,14 @@ export function AuthProvider({ children }: Props) {
   }, [])
 
   useEffect(() => {
-    if (!accessToken) setStatus('no-auth')
-    else setStatus('auth')
     localStorage.setItem('accessToken', JSON.stringify(accessToken))
-    localStorage.setItem('refreshToken', JSON.stringify(refreshToken))
   }, [accessToken, refreshToken])
+
+  useEffect(() => {
+    if (!refreshToken) setStatus('no-auth')
+    else setStatus('auth')
+    localStorage.setItem('refreshToken', JSON.stringify(refreshToken))
+  }, [refreshToken])
 
   return (
     <AuthContext.Provider

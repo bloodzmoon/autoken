@@ -30,16 +30,18 @@ export function TokenDisplay() {
           }}
         />
       </div>
-      <div className={css('token')}>
-        <span className={css('text')}>Refresh Token</span>
-        <span
-          className={css('lifetime timer')}
-          style={{
-            animationDuration: calAniTime(auth.refreshToken?.exp),
-            width: calAniWidth(45, auth.refreshToken?.exp),
-          }}
-        />
-      </div>
+      {
+        <div className={css('token')}>
+          <span className={css('text')}>Refresh Token</span>
+          <span
+            className={css('lifetime timer')}
+            style={{
+              animationDuration: calAniTime(auth.refreshToken?.exp),
+              width: calAniWidth(45, auth.refreshToken?.exp),
+            }}
+          />
+        </div>
+      }
     </div>
   )
 }

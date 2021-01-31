@@ -26,6 +26,17 @@ export async function logout() {
   }
 }
 
+export async function renewToken() {
+  await delay(1200)
+  try {
+    const refreshToken = JSON.parse(localStorage.getItem('refreshToken') || '')
+    const { data } = await axios.post('/token', { refreshToken })
+    return [null, data]
+  } catch (error) {
+    return [error]
+  }
+}
+
 export async function getProfile() {
   await delay(500)
   try {
@@ -35,8 +46,8 @@ export async function getProfile() {
         Authorization: `Bearer ${token}`,
       },
     })
-    console.log(data)
+    return [null, data]
   } catch (error) {
-    console.log(error)
+    return [error]
   }
 }

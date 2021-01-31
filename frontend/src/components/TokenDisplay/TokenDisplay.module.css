@@ -40,6 +40,9 @@
 }
 
 @keyframes time {
+  from {
+    width: attr(data-percent);
+  }
   to {
     width: 0%;
   }

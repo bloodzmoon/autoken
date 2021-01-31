@@ -1,3 +1,3 @@
 export { cssModule } from './cssModule'
-export { login, logout, getProfile } from './api'
+export { login, logout, getProfile, renewToken } from './api'
 export { delay } from './delay'
