@@ -22,7 +22,7 @@ export function generateRefreshToken(username: string) {
     { username },
     process.env.REFRESH_TOKEN_SECRET as string,
     {
-      expiresIn: '60s',
+      expiresIn: '45s',
     }
   )
   const decoded: any = JWT.verify(

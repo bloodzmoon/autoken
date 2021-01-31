@@ -36,7 +36,7 @@ export function TokenDisplay() {
           className={css('lifetime timer')}
           style={{
             animationDuration: calAniTime(auth.refreshToken?.exp),
-            width: calAniWidth(60, auth.refreshToken?.exp),
+            width: calAniWidth(45, auth.refreshToken?.exp),
           }}
         />
       </div>

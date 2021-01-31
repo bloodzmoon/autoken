@@ -15,7 +15,16 @@ router.post('/login', (req, res) => {
 
   const accessToken = generateToken(username)
   const refreshToken = generateRefreshToken(username)
+
+  const expTimer = refreshToken.exp * 1000 - new Date().getTime()
   refreshTokens.push(refreshToken.token)
+  setTimeout(() => {
+    const index = refreshTokens.findIndex(
+      (token) => token === refreshToken.token
+    )
+    refreshTokens.splice(index, 1)
+  }, expTimer)
+
   res.json({ accessToken, refreshToken })
 })
 
@@ -37,11 +46,20 @@ router.post('/token', (req, res) => {
 
 router.delete('/logout', (req, res) => {
   const { refreshToken } = req.body
-  const index = refreshTokens.findIndex((token) => token === refreshToken)
+  const index = refreshTokens.findIndex((token) => token === refreshToken.token)
   if (index === -1) return res.sendStatus(204)
 
   refreshTokens.splice(index, 1)
   return res.sendStatus(204)
+})
+
+router.get('/token-count', (req, res) => {
+  res.json(refreshTokens.length)
+})
+
+router.delete('/dangerously-delete-all-refresh-token', (req, res) => {
+  refreshTokens.splice(0, refreshTokens.length)
+  res.sendStatus(204)
 })
 
 export default router

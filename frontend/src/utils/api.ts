@@ -17,8 +17,10 @@ export async function login(username: string, password: string) {
 export async function logout() {
   await delay(1000)
   try {
-    const refreshToken = localStorage.getItem('refreshToken')
+    const refreshToken = JSON.parse(localStorage.getItem('refreshToken') || '')
     await axios.delete('/logout', { data: { refreshToken } })
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('refreshToken')
   } catch (error) {
     console.log(error)
   }
