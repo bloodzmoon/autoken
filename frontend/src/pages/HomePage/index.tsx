@@ -1,6 +1,13 @@
 import { useState } from 'react'
 import { AiOutlineLock, AiOutlineUser, AiOutlineSafety } from 'react-icons/ai'
-import { Button, Form, Input, Spacer, Status } from '../../components'
+import {
+  Button,
+  Form,
+  Input,
+  Spacer,
+  Status,
+  TokenDisplay,
+} from '../../components'
 import { useAuth } from '../../contexts'
 import { cssModule, login, logout } from '../../utils'
 import styles from './HomePage.module.css'
@@ -44,11 +51,7 @@ export function HomePage() {
     <div className={css('page')}>
       <Status />
       <Spacer />
-      <Form
-        onSubmit={handleSubmit}
-        error={error}
-        short={auth.status !== 'no-auth'}
-      >
+      <Form status={auth.status} onSubmit={handleSubmit} error={error}>
         <h1 className={css('head')}>
           <AiOutlineSafety />
           Autoken
@@ -79,12 +82,14 @@ export function HomePage() {
             />
           </>
         )}
+        {auth.status === 'auth' && <TokenDisplay />}
         <Spacer />
-        <Button>
-          {auth.status === 'auth' && 'Logout'}
-          {auth.status === 'no-auth' && 'Login'}
-          {auth.status === 'loading' && 'Loading'}
-        </Button>
+        {auth.status !== 'loading' && (
+          <Button>
+            {auth.status === 'auth' && 'Logout'}
+            {auth.status === 'no-auth' && 'Login'}
+          </Button>
+        )}
       </Form>
     </div>
   )

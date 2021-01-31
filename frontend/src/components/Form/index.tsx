@@ -2,16 +2,16 @@ import styles from './Form.module.css'
 import { cssModule } from '../../utils'
 
 interface Props extends React.FormHTMLAttributes<HTMLFormElement> {
+  status: 'auth' | 'no-auth' | 'loading'
   onSubmit?: () => void
   error?: boolean
-  short?: boolean
 }
 
 export function Form({
   onSubmit = () => {},
   error,
   children,
-  short,
+  status,
   ...props
 }: Props) {
   const css = cssModule(styles)
@@ -24,9 +24,7 @@ export function Form({
   return (
     <form
       onSubmit={handler}
-      className={
-        css('wrapper', error ? 'err' : '', short ? 'short' : '') + ' shadow '
-      }
+      className={css('wrapper', error ? 'err' : '', status) + ' shadow '}
       {...props}
     >
       {children}

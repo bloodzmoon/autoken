@@ -1,6 +1,5 @@
 .wrapper {
   width: 100%;
-  height: 317px;
   padding: 2rem;
   background: white;
   border-radius: 1rem;
@@ -10,8 +9,16 @@
   overflow: hidden;
 }
 
-.short {
-  height: 190px;
+.no-auth {
+  height: 317px;
+}
+
+.loading {
+  height: 100px;
+}
+
+.auth {
+  height: 200px;
 }
 
 .err {
