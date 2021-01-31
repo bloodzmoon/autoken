@@ -35,7 +35,7 @@ export function HomePage() {
         } else {
           auth.setStatus('auth')
           auth.setAccessToken(data.accessToken)
-          auth.setAccessToken(data.accessToken)
+          auth.setRefreshToken(data.refreshToken)
         }
         setUsername('')
         setPassword('')

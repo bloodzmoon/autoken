@@ -1,4 +1,4 @@
 import AuthRouter from './auth'
-import SecretRouter from './secret'
+import ProfileRouter from './profile'
 
-export default () => [AuthRouter, SecretRouter]
+export default () => [AuthRouter, ProfileRouter]

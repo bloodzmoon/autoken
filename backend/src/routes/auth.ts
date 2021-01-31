@@ -15,7 +15,7 @@ router.post('/login', (req, res) => {
 
   const accessToken = generateToken(username)
   const refreshToken = generateRefreshToken(username)
-  refreshTokens.push(refreshToken)
+  refreshTokens.push(refreshToken.token)
   res.json({ accessToken, refreshToken })
 })
 

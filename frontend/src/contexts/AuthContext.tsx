@@ -1,14 +1,15 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 
 type Status = 'no-auth' | 'loading' | 'auth'
+type Token = { token: string; exp: number }
 
 type Auth = {
   status: Status
-  accessToken: string | null
-  refreshToken: string | null
+  accessToken: Token | null
+  refreshToken: Token | null
   setStatus: React.Dispatch<React.SetStateAction<Status>>
-  setAccessToken: React.Dispatch<React.SetStateAction<string | null>>
-  setRefreshToken: React.Dispatch<React.SetStateAction<string | null>>
+  setAccessToken: React.Dispatch<React.SetStateAction<Token | null>>
+  setRefreshToken: React.Dispatch<React.SetStateAction<Token | null>>
 }
 
 type Props = { children: React.ReactNode }
@@ -24,8 +25,8 @@ const AuthContext = createContext<Auth>({
 
 export function AuthProvider({ children }: Props) {
   const [status, setStatus] = useState<Status>('loading')
-  const [accessToken, setAccessToken] = useState<string | null>(null)
-  const [refreshToken, setRefreshToken] = useState<string | null>(null)
+  const [accessToken, setAccessToken] = useState<Token | null>(null)
+  const [refreshToken, setRefreshToken] = useState<Token | null>(null)
 
   useEffect(() => {
     const aToken = localStorage.getItem('accessToken')
