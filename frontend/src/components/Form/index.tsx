@@ -4,12 +4,14 @@ import { cssModule } from '../../utils'
 interface Props extends React.FormHTMLAttributes<HTMLFormElement> {
   onSubmit?: () => void
   error?: boolean
+  short?: boolean
 }
 
 export function Form({
   onSubmit = () => {},
   error,
   children,
+  short,
   ...props
 }: Props) {
   const css = cssModule(styles)
@@ -22,7 +24,9 @@ export function Form({
   return (
     <form
       onSubmit={handler}
-      className={css('wrapper', error ? 'err' : '') + ' shadow'}
+      className={
+        css('wrapper', error ? 'err' : '', short ? 'short' : '') + ' shadow '
+      }
       {...props}
     >
       {children}

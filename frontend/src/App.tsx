@@ -1,10 +1,13 @@
 import { HomePage } from './pages'
+import { AuthProvider } from './contexts'
 
 function App() {
   return (
-    <div id="App">
-      <HomePage />
-    </div>
+    <AuthProvider>
+      <div id="App">
+        <HomePage />
+      </div>
+    </AuthProvider>
   )
 }
 

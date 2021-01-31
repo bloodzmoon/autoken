@@ -23,3 +23,7 @@
 .btn:active {
   background: #2563EB;
 }
+
+.btn:disabled {
+  cursor: initial;
+}
