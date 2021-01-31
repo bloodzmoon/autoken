@@ -4,6 +4,7 @@ import {
   Button,
   Form,
   Input,
+  Panel,
   Spacer,
   Status,
   TokenDisplay,
@@ -82,13 +83,18 @@ export function HomePage() {
             />
           </>
         )}
-        {auth.status === 'auth' && <TokenDisplay />}
-        <Spacer />
-        {auth.status !== 'loading' && (
-          <Button>
-            {auth.status === 'auth' && 'Logout'}
-            {auth.status === 'no-auth' && 'Login'}
-          </Button>
+        {auth.status === 'no-auth' && (
+          <>
+            <Spacer />
+            <Button>Login</Button>
+          </>
+        )}
+        {auth.status === 'auth' && (
+          <>
+            <TokenDisplay />
+            <Spacer />
+            <Panel />
+          </>
         )}
       </Form>
     </div>

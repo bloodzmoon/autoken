@@ -27,3 +27,12 @@
 .btn:disabled {
   cursor: initial;
 }
+
+.red {
+  color: inherit;
+  background: #F3F4F6;
+}
+
+.red:active {
+  background: #E2E8F0;
+}
